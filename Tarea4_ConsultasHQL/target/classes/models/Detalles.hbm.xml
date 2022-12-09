@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 dic 2022 8:59:43 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="models.Detalles" table="detalles" catalog="bd_neptuno2" optimistic-lock="version">
+        <composite-id name="id" class="models.DetallesId">
+            <key-property name="pedidoId" type="int">
+                <column name="pedido_id" />
+            </key-property>
+            <key-property name="productoId" type="int">
+                <column name="producto_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="pedidos" class="models.Pedidos" update="false" insert="false" fetch="select">
+            <column name="pedido_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="productos" class="models.Productos" update="false" insert="false" fetch="select">
+            <column name="producto_id" not-null="true" />
+        </many-to-one>
+        <property name="precioUnidad" type="big_decimal">
+            <column name="precio_unidad" scale="4" />
+        </property>
+        <property name="cantidad" type="java.lang.Short">
+            <column name="cantidad" />
+        </property>
+        <property name="descuento" type="java.lang.Double">
+            <column name="descuento" precision="7" />
+        </property>
+    </class>
+</hibernate-mapping>

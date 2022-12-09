@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 dic 2022 8:59:43 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="models.VEmpleados1" table="v_empleados1" catalog="bd_neptuno2" optimistic-lock="version">
+        <comment>VIEW</comment>
+        <composite-id name="id" class="models.VEmpleados1Id">
+            <key-property name="id" type="int">
+                <column name="id" />
+            </key-property>
+            <key-property name="apellidos" type="string">
+                <column name="apellidos" length="20" />
+            </key-property>
+            <key-property name="nombre" type="string">
+                <column name="nombre" length="10" />
+            </key-property>
+            <key-property name="cargo" type="string">
+                <column name="cargo" length="30" />
+            </key-property>
+            <key-property name="tratamiento" type="string">
+                <column name="tratamiento" length="25" />
+            </key-property>
+            <key-property name="fechaNacimiento" type="date">
+                <column name="fecha_nacimiento" length="10" />
+            </key-property>
+            <key-property name="fechaContratacion" type="date">
+                <column name="fecha_contratacion" length="10" />
+            </key-property>
+            <key-property name="direccion" type="string">
+                <column name="direccion" length="60" />
+            </key-property>
+            <key-property name="ciudad" type="string">
+                <column name="ciudad" length="15" />
+            </key-property>
+            <key-property name="region" type="string">
+                <column name="region" length="15" />
+            </key-property>
+            <key-property name="cp" type="string">
+                <column name="cp" length="10" />
+            </key-property>
+            <key-property name="pais" type="string">
+                <column name="pais" length="15" />
+            </key-property>
+            <key-property name="telefonoDomicilio" type="string">
+                <column name="telefono_domicilio" length="24" />
+            </key-property>
+            <key-property name="extension" type="string">
+                <column name="extension" length="4" />
+            </key-property>
+            <key-property name="notas" type="string">
+                <column name="notas" length="65535" />
+            </key-property>
+            <key-property name="jefeId" type="java.lang.Integer">
+                <column name="jefe_id" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

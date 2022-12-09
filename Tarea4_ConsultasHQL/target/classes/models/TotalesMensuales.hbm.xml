@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 dic 2022 8:59:43 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="models.TotalesMensuales" table="totales_mensuales" catalog="bd_neptuno2" optimistic-lock="version">
+        <comment>VIEW</comment>
+        <composite-id name="id" class="models.TotalesMensualesId">
+            <key-property name="a&#241;o" type="java.lang.Integer">
+                <column name="a&#241;o" />
+            </key-property>
+            <key-property name="mes" type="java.lang.Integer">
+                <column name="mes" />
+            </key-property>
+            <key-property name="fecha" type="date">
+                <column name="fecha" length="10" />
+            </key-property>
+            <key-property name="cargo" type="big_integer">
+                <column name="cargo" precision="38" scale="0" />
+            </key-property>
+            <key-property name="importe" type="java.lang.Double">
+                <column name="importe" precision="22" scale="0" />
+            </key-property>
+            <key-property name="total" type="java.lang.Double">
+                <column name="total" precision="22" scale="0" />
+            </key-property>
+            <key-property name="numPedidos" type="long">
+                <column name="num_pedidos" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

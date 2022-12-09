@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 dic 2022 8:59:43 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="models.Productos" table="productos" catalog="bd_neptuno2" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categorias" class="models.Categorias" fetch="select">
+            <column name="categoria_id" />
+        </many-to-one>
+        <many-to-one name="proveedores" class="models.Proveedores" fetch="select">
+            <column name="proveedor_id" />
+        </many-to-one>
+        <property name="producto" type="string">
+            <column name="producto" length="40" not-null="true" unique="true" />
+        </property>
+        <property name="cantidadPorUnidad" type="string">
+            <column name="cantidad_por_unidad" length="20" />
+        </property>
+        <property name="precioUnidad" type="big_decimal">
+            <column name="precio_unidad" scale="4" />
+        </property>
+        <property name="unidadesExistencia" type="java.lang.Short">
+            <column name="unidades_existencia" />
+        </property>
+        <property name="unidadesPedido" type="java.lang.Short">
+            <column name="unidades_pedido" />
+        </property>
+        <property name="nivelNuevoPedido" type="java.lang.Integer">
+            <column name="nivel_nuevo_pedido" />
+        </property>
+        <property name="suspendido" type="boolean">
+            <column name="suspendido" not-null="true" />
+        </property>
+        <property name="notas" type="string">
+            <column name="notas" length="65535" />
+        </property>
+        <property name="iva" type="big_decimal">
+            <column name="iva" precision="14" not-null="true" />
+        </property>
+        <set name="detalleses" table="detalles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="producto_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Detalles" />
+        </set>
+    </class>
+</hibernate-mapping>

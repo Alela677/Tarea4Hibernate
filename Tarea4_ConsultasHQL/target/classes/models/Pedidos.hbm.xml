@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 dic 2022 8:59:43 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="models.Pedidos" table="pedidos" catalog="bd_neptuno2" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clientes" class="models.Clientes" fetch="select">
+            <column name="cliente_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empleados" class="models.Empleados" fetch="select">
+            <column name="empleado_id" />
+        </many-to-one>
+        <many-to-one name="envios" class="models.Envios" fetch="select">
+            <column name="envio_id" />
+        </many-to-one>
+        <property name="fechaPedido" type="date">
+            <column name="fecha_pedido" length="10" />
+        </property>
+        <property name="fechaEntrega" type="date">
+            <column name="fecha_entrega" length="10" />
+        </property>
+        <property name="fechaEnvio" type="date">
+            <column name="fecha_envio" length="10" />
+        </property>
+        <property name="cargo" type="big_decimal">
+            <column name="cargo" scale="4" />
+        </property>
+        <property name="destinatario" type="string">
+            <column name="destinatario" length="40" />
+        </property>
+        <property name="direccionDestinatario" type="string">
+            <column name="direccion_destinatario" length="60" />
+        </property>
+        <property name="ciudadDestinatario" type="string">
+            <column name="ciudad_destinatario" length="15" />
+        </property>
+        <property name="regionDestinatario" type="string">
+            <column name="region_destinatario" length="15" />
+        </property>
+        <property name="cpDestinatario" type="string">
+            <column name="cp_destinatario" length="10" />
+        </property>
+        <property name="paisDestinatario" type="string">
+            <column name="pais_destinatario" length="15" />
+        </property>
+        <set name="detalleses" table="detalles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pedido_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Detalles" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 dic 2022 8:59:43 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="models.Proveedores" table="proveedores" catalog="bd_neptuno2" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="empresa" type="string">
+            <column name="empresa" length="40" not-null="true" unique="true" />
+        </property>
+        <property name="contacto" type="string">
+            <column name="contacto" length="30" />
+        </property>
+        <property name="cargoContacto" type="string">
+            <column name="cargo_contacto" length="30" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="60" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="15" />
+        </property>
+        <property name="region" type="string">
+            <column name="region" length="15" />
+        </property>
+        <property name="cp" type="string">
+            <column name="cp" length="10" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="15" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="24" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="24" />
+        </property>
+        <property name="web" type="string">
+            <column name="web" length="65535" />
+        </property>
+        <set name="productoses" table="productos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proveedor_id" />
+            </key>
+            <one-to-many class="models.Productos" />
+        </set>
+    </class>
+</hibernate-mapping>
